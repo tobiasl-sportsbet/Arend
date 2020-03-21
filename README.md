@@ -31,6 +31,8 @@ dependencies {
     implementation 'com.github.JetBrains.Arend:proto:master-SNAPSHOT'
     // The main compiler
     implementation 'com.github.JetBrains.Arend:base:master-SNAPSHOT'
+    // The unit test helpers
+    testImplementation 'com.github.JetBrains.Arend:tester:master-SNAPSHOT'
 }
 ```
 
@@ -46,5 +48,6 @@ dependencies {
     implementation("com.github.JetBrains.Arend:parser:master-SNAPSHOT")
     implementation("com.github.JetBrains.Arend:proto:master-SNAPSHOT")
     implementation("com.github.JetBrains.Arend:base:master-SNAPSHOT")
+    testImplementation("com.github.JetBrains.Arend:tester:master-SNAPSHOT")
 }
 ```
