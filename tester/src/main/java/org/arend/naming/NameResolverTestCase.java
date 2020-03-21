@@ -1,6 +1,5 @@
 package org.arend.naming;
 
-import org.arend.ArendTestCase;
 import org.arend.core.context.binding.Binding;
 import org.arend.frontend.ConcreteReferableProvider;
 import org.arend.frontend.reference.ConcreteLocatedReferable;
@@ -28,7 +27,7 @@ public abstract class NameResolverTestCase extends ParserTestCase {
     assertThat(expression, is(notNullValue()));
 
     expression = expression.accept(new ExpressionResolveNameVisitor(ConcreteReferableProvider.INSTANCE, parentScope, context, new TestLocalErrorReporter(errorReporter), null), null);
-    assertThat(errorList, ArendTestCase.containsErrors(errors));
+    assertThat(errorList, containsErrors(errors));
     return expression;
   }
 
@@ -58,7 +57,7 @@ public abstract class NameResolverTestCase extends ParserTestCase {
     ChildGroup group = parseDef(text);
     Scope parentScope = new MergeScope(new SingletonScope(group.getReferable()), PreludeLibrary.getPreludeScope());
     new DefinitionResolveNameVisitor(ConcreteReferableProvider.INSTANCE, errorReporter).resolveGroupWithTypes(group, null, CachingScope.make(LexicalScope.insideOf(group, parentScope)));
-    assertThat(errorList, ArendTestCase.containsErrors(errors));
+    assertThat(errorList, containsErrors(errors));
     return group;
   }
 
@@ -79,7 +78,7 @@ public abstract class NameResolverTestCase extends ParserTestCase {
     Scope scope = CachingScope.make(ScopeFactory.forGroup(group, moduleScopeProvider));
     new DefinitionResolveNameVisitor(ConcreteReferableProvider.INSTANCE, errorReporter).resolveGroupWithTypes(group, null, scope);
     libraryManager.getInstanceProviderSet().collectInstances(group, CachingScope.make(ScopeFactory.parentScopeForGroup(group, moduleScopeProvider, true)), ConcreteReferableProvider.INSTANCE, null);
-    assertThat(errorList, ArendTestCase.containsErrors(errors));
+    assertThat(errorList, containsErrors(errors));
   }
 
   protected ChildGroup resolveNamesModule(String text, int errors) {
