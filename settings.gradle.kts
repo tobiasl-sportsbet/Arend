@@ -5,6 +5,7 @@ rootProject.name = "Arend"
 include(
     "api",
     "base",
+    "html",
     "cli",
     "proto",
     "parser"
