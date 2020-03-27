@@ -212,6 +212,7 @@ tupleExpr : expr (':' expr)?;
 atom  : literal                               # atomLiteral
       | '(' (tupleExpr (',' tupleExpr)*)? ')' # tuple
       | NUMBER                                # atomNumber
+      | APPLY_HOLE                            # atomApplyHole
       | NEGATIVE_NUMBER                       # atomNegativeNumber
       | '\\this'                              # atomThis
       ;
@@ -268,6 +269,7 @@ TRUNCATED_UNIVERSE : '\\' (NUMBER '-' | 'oo-' | 'h') 'Type' [0-9]*;
 SET : '\\Set' [0-9]*;
 COLON : ':';
 ARROW : '->';
+APPLY_HOLE : '__';
 UNDERSCORE : '_';
 WS : [ \t\r\n]+ -> skip;
 LINE_COMMENT : '--' '-'* (~[~!@#$%^&*\-+=<>?/|:[\u005Da-zA-Z_0-9'\r\n] ~[\r\n]* | ) -> skip;

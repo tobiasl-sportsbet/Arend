@@ -1394,6 +1394,11 @@ public class BuildVisitor extends ArendBaseVisitor {
   }
 
   @Override
+  public Concrete.ApplyHoleExpression visitAtomApplyHole(AtomApplyHoleContext ctx) {
+    return new Concrete.ApplyHoleExpression(tokenPosition(ctx.start));
+  }
+
+  @Override
   public Concrete.NumericLiteral visitAtomNegativeNumber(AtomNegativeNumberContext ctx) {
     return new Concrete.NumericLiteral(tokenPosition(ctx.start), new BigInteger(ctx.NEGATIVE_NUMBER().getText(), 10));
   }
